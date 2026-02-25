@@ -180,6 +180,36 @@
       font-size: 0.9rem;
     }
 
+    /* ── TABS ─────────────────────────────────────────────── */
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      padding: 6px 18px;
+      border-radius: 6px;
+      border: 1.5px solid var(--gray-2);
+      background: #fff;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--gray-6);
+      transition: all .15s;
+    }
+    .tab-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    td.best  { font-weight: 700; }
+    td.second { text-decoration: underline; }
+
     /* ── BIBTEX ───────────────────────────────────────────── */
     pre {
       background: var(--gray-1);
@@ -288,31 +318,74 @@
     <h2>Results</h2>
     <p>
       StethoLM achieves <strong>71.8% BERTScore F1</strong> and <strong>47.8% clinical accuracy</strong>
-      on the in-domain StethoBench test set, outperforming all baselines including large-scale
-      general-purpose audio–language models.
+      on StethoBench, outperforming all baselines. On four out-of-domain datasets it achieves
+      <strong>64.8% BERTScore</strong> and <strong>25.2% accuracy</strong>, ranking first on three of four benchmarks.
     </p>
 
-    <div class="table-wrap" style="margin-top:20px;">
-      <table>
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>In-domain BERTScore (%)</th>
-            <th>In-domain Accuracy (%)</th>
-            <th>OOD BERTScore (%)</th>
-            <th>OOD Accuracy (%)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Pengi</td><td>29.4</td><td>0.5</td><td>—</td><td>—</td></tr>
-          <tr><td>LTU</td><td>37.3</td><td>1.6</td><td>—</td><td>—</td></tr>
-          <tr><td>GAMA</td><td>44.5</td><td>3.7</td><td>—</td><td>—</td></tr>
-          <tr><td>MedGemma (text only)</td><td>43.8</td><td>2.8</td><td>—</td><td>—</td></tr>
-          <tr><td>Gemini-2.5-Flash</td><td>47.0</td><td>21.0</td><td>—</td><td>—</td></tr>
-          <tr><td>Qwen2.5-Omni</td><td>56.5</td><td>21.2</td><td>—</td><td>—</td></tr>
-          <tr class="highlight"><td>StethoLM (ours)</td><td>71.8</td><td>47.8</td><td>64.8</td><td>25.2</td></tr>
-        </tbody>
-      </table>
+    <div class="tab-bar" style="margin-top:20px;">
+      <button class="tab-btn active" onclick="switchTab(event,'in-domain')">In-Domain</button>
+      <button class="tab-btn"        onclick="switchTab(event,'ood')">Out-of-Domain</button>
+    </div>
+
+    <!-- IN-DOMAIN -->
+    <div id="in-domain" class="tab-panel active">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>LLM<br/><small>BertS / Acc</small></th>
+              <th>Pengi<br/><small>BertS / Acc</small></th>
+              <th>LTU<br/><small>BertS / Acc</small></th>
+              <th>GAMA<br/><small>BertS / Acc</small></th>
+              <th>Gemma3N<br/><small>BertS / Acc</small></th>
+              <th>Gemini<br/><small>BertS / Acc</small></th>
+              <th>Qwen2.5-Omni<br/><small>BertS / Acc</small></th>
+              <th>StethoLM<br/><small>BertS / Acc</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Classification</td><td>48.6 / 4.9</td><td>33.6 / 7.6</td><td>49.0 / 2.5</td><td>46.4 / 7.5</td><td>51.3 / 31.3</td><td>49.3 / <span class="second">49.5</span></td><td><span class="second">58.9</span> / 31.0</td><td class="best">75.5 / 66.4</td></tr>
+            <tr><td>Detection</td><td>43.0 / 2.8</td><td>30.8 / 4.3</td><td>43.1 / 3.6</td><td>44.0 / 4.2</td><td>47.1 / 11.5</td><td>45.9 / 19.2</td><td><span class="second">52.5 / 22.0</span></td><td class="best">70.4 / 47.9</td></tr>
+            <tr><td>Reporting</td><td>41.1 / 2.2</td><td>30.7 / 4.1</td><td>45.1 / 2.0</td><td>44.7 / 2.0</td><td>47.5 / 9.2</td><td>49.8 / <span class="second">13.2</span></td><td><span class="second">56.7</span> / 12.7</td><td class="best">72.8 / 36.2</td></tr>
+            <tr><td>Reasoning</td><td>41.8 / 0.0</td><td>27.6 / 1.0</td><td>43.7 / 4.0</td><td>46.5 / 5.3</td><td>45.2 / 9.0</td><td>47.6 / 22.2</td><td><span class="second">55.6 / 29.0</span></td><td class="best">71.4 / 44.1</td></tr>
+            <tr><td>Diff. Diagnosis</td><td>42.3 / 3.3</td><td>26.6 / 4.1</td><td>44.9 / 4.0</td><td>44.6 / 4.0</td><td>44.5 / 3.7</td><td>43.6 / 13.2</td><td><span class="second">60.2 / 19.8</span></td><td class="best">67.7 / 30.6</td></tr>
+            <tr><td>Comparison</td><td>45.1 / 2.3</td><td>28.4 / 1.7</td><td>47.2 / 2.1</td><td>45.2 / 1.9</td><td>47.7 / 12.7</td><td>46.9 / 15.4</td><td><span class="second">57.8 / 22.7</span></td><td class="best">70.7 / 40.5</td></tr>
+            <tr><td>Location</td><td>44.4 / 4.3</td><td>26.4 / 1.1</td><td>46.4 / 4.4</td><td>46.0 / 2.2</td><td>49.0 / 11.0</td><td>45.6 / <span class="second">14.3</span></td><td><span class="second">54.6</span> / 11.3</td><td class="best">72.0 / 36.8</td></tr>
+            <tr style="border-top:2px solid var(--gray-2); font-weight:600;"><td>Overall</td><td>43.8 / 2.8</td><td>29.2 / 3.4</td><td>45.6 / 3.2</td><td>45.3 / 3.9</td><td>47.5 / 12.6</td><td>47.0 / 21.0</td><td><span class="second">56.5 / 21.2</span></td><td class="best">71.8 / 47.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.82rem; color:var(--gray-6); margin-top:8px;">BertS = BERTScore F1 (%), Acc = clinical accuracy (%). <strong>Bold</strong> = best, <u>underline</u> = second best.</p>
+    </div>
+
+    <!-- OOD -->
+    <div id="ood" class="tab-panel">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>LLM<br/><small>BertS / Acc</small></th>
+              <th>Pengi<br/><small>BertS / Acc</small></th>
+              <th>LTU<br/><small>BertS / Acc</small></th>
+              <th>GAMA<br/><small>BertS / Acc</small></th>
+              <th>Gemma3N<br/><small>BertS / Acc</small></th>
+              <th>Gemini<br/><small>BertS / Acc</small></th>
+              <th>Qwen2.5-Omni<br/><small>BertS / Acc</small></th>
+              <th>StethoLM<br/><small>BertS / Acc</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>TR</td><td>44.0 / 0.5</td><td>27.7 / 1.6</td><td>44.2 / 0.6</td><td>44.0 / 0.3</td><td>48.4 / 5.6</td><td>44.8 / 7.5</td><td><span class="second">60.7 / 17.7</span></td><td class="best">66.2 / 25.7</td></tr>
+            <tr><td>CinC</td><td>39.5 / 1.1</td><td>29.4 / 1.3</td><td>42.3 / 0.4</td><td>42.6 / 0.7</td><td>44.5 / 5.2</td><td>45.9 / <span class="second">21.5</span></td><td><span class="second">54.0</span> / 12.4</td><td class="best">63.3 / 22.2</td></tr>
+            <tr><td>BMD-HS</td><td>45.0 / 2.5</td><td>27.3 / 1.4</td><td>47.2 / 1.2</td><td>46.7 / 4.4</td><td>48.2 / 11.7</td><td>40.7 / <span class="second">20.9</span></td><td><span class="second">58.6</span> / 17.3</td><td class="best">67.3 / 30.4</td></tr>
+            <tr><td>FluSense</td><td>45.8 / 0.3</td><td>30.6 / 15.6</td><td>45.8 / 9.4</td><td>47.3 / 22.3</td><td>50.7 / 9.4</td><td>52.3 / 14.3</td><td><span class="second">59.4</span> / <span class="best">37.1</span></td><td class="best">61.5</td> / <span class="second">23.2</span></tr>
+            <tr style="border-top:2px solid var(--gray-2); font-weight:600;"><td>Overall</td><td>43.6 / 1.1</td><td>28.8 / 5.0</td><td>44.9 / 2.9</td><td>45.2 / 6.9</td><td>48.0 / 8.0</td><td>45.9 / 16.1</td><td><span class="second">58.2 / 21.1</span></td><td class="best">64.8 / 25.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.82rem; color:var(--gray-6); margin-top:8px;">BertS = BERTScore F1 (%), Acc = clinical accuracy (%). <strong>Bold</strong> = best, <u>underline</u> = second best.</p>
     </div>
   </section>
 
@@ -334,5 +407,13 @@
   Website template adapted for StethoLM &mdash; Eindhoven University of Technology
 </footer>
 
+<script>
+  function switchTab(e, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 </body>
 </html>
