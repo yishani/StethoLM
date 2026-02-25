@@ -101,7 +101,7 @@
 
     /* ── MAIN ─────────────────────────────────────────────── */
     main {
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px 80px;
     }
@@ -128,7 +128,7 @@
       overflow: hidden;
     }
 
-    .fig-wrap embed, .fig-wrap img {
+    .fig-wrap img {
       display: block;
       width: 100%;
     }
@@ -138,6 +138,34 @@
       color: var(--gray-6);
       padding: 12px 16px;
       border-top: 1px solid var(--gray-2);
+    }
+
+    /* ── TASK GRID ────────────────────────────────────────── */
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .task-card {
+      background: var(--gray-0);
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+
+    .task-card .task-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .task-card p {
+      font-size: 0.8rem;
+      color: var(--gray-6);
+      margin: 0;
+      line-height: 1.4;
     }
 
     /* ── RESULTS TABLE ────────────────────────────────────── */
@@ -150,35 +178,25 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     thead { background: var(--gray-1); }
 
     th, td {
-      padding: 10px 16px;
+      padding: 9px 14px;
       text-align: left;
       border-bottom: 1px solid var(--gray-2);
       white-space: nowrap;
     }
 
-    th { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    th { font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
     tr:last-child td { border-bottom: none; }
-    tr.highlight td { background: #eff6ff; font-weight: 600; }
+    tr.overall { border-top: 2px solid var(--gray-2); }
 
-    /* ── ANIMATION PLACEHOLDER ────────────────────────────── */
-    .anim-placeholder {
-      background: var(--gray-1);
-      border: 2px dashed var(--gray-2);
-      border-radius: var(--radius);
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-6);
-      font-size: 0.9rem;
-    }
+    .b  { font-weight: 700; }
+    .u  { text-decoration: underline; }
 
     /* ── TABS ─────────────────────────────────────────────── */
     .tab-bar {
@@ -207,8 +225,18 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    td.best  { font-weight: 700; }
-    td.second { text-decoration: underline; }
+    /* ── ANIMATION PLACEHOLDER ────────────────────────────── */
+    .anim-placeholder {
+      background: var(--gray-1);
+      border: 2px dashed var(--gray-2);
+      border-radius: var(--radius);
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-6);
+      font-size: 0.9rem;
+    }
 
     /* ── BIBTEX ───────────────────────────────────────────── */
     pre {
@@ -249,18 +277,10 @@
   <p class="affil">Eindhoven University of Technology</p>
 
   <div class="links">
-    <a class="btn btn-primary" href="https://openreview.net/forum?id=i9RuUH9Jyj" target="_blank">
-      📄 Paper
-    </a>
-    <a class="btn" href="https://github.com/yishani/StethoLM" target="_blank">
-      💻 Code
-    </a>
-    <a class="btn" href="https://huggingface.co/datasets/askyishan/StethoBench" target="_blank">
-      🗂 Dataset
-    </a>
-    <a class="btn" href="https://huggingface.co/askyishan/StethoLM" target="_blank">
-      🤗 Model
-    </a>
+    <a class="btn btn-primary" href="https://openreview.net/forum?id=i9RuUH9Jyj" target="_blank">📄 Paper</a>
+    <a class="btn" href="https://github.com/yishani/StethoLM" target="_blank">💻 Code</a>
+    <a class="btn" href="https://huggingface.co/datasets/askyishan/StethoBench" target="_blank">🗂 Dataset</a>
+    <a class="btn" href="https://huggingface.co/askyishan/StethoLM" target="_blank">🤗 Model</a>
   </div>
 </header>
 
@@ -283,12 +303,9 @@
       the full spectrum of auscultation analysis. StethoLM integrates audio encoding with a medical
       language model backbone and is trained on <strong>StethoBench</strong>, a comprehensive
       benchmark comprising 77,027 instruction–response pairs synthesized from 16,125 labeled
-      cardiopulmonary recordings spanning seven clinical task categories: binary classification,
-      detection, reporting, reasoning, differential diagnosis, comparison, and location-based
-      analysis. Through multi-stage training that combines supervised fine-tuning and direct
-      preference optimization, StethoLM achieves substantial gains in performance and robustness on
-      out-of-distribution data. Our work establishes a foundation for instruction-following AI
-      systems in clinical auscultation.
+      cardiopulmonary recordings spanning seven clinical task categories. Through multi-stage
+      training combining supervised fine-tuning and direct preference optimization, StethoLM
+      achieves substantial gains in performance and robustness on out-of-distribution data.
     </p>
   </section>
 
@@ -296,13 +313,40 @@
   <section id="overview">
     <h2>Overview</h2>
     <figure class="fig-wrap">
-      <embed src="static/images/overview.pdf" type="application/pdf" height="480" />
+      <img src="static/images/splash.png" alt="StethoLM architecture overview" />
       <figcaption>
         <strong>StethoLM architecture.</strong> A domain-adapted audio encoder (COLA) is connected
         to MedGemma-4B-IT via an MLP prefix projector with LoRA fine-tuning, enabling
         instruction-driven clinical reasoning over cardiopulmonary recordings.
       </figcaption>
     </figure>
+  </section>
+
+  <!-- BENCHMARK TASKS -->
+  <section id="tasks">
+    <h2>StethoBench Task Coverage</h2>
+    <p>
+      StethoBench covers seven distinct clinical task categories, spanning the full range of
+      auscultation analysis — from simple binary decisions to complex multi-step clinical reasoning.
+      The 77,027 instruction–response pairs are synthesized from 16,125 labeled recordings across
+      cardiac and pulmonary domains.
+    </p>
+    <figure class="fig-wrap">
+      <img src="static/images/tasks.png" alt="StethoBench task categories" />
+      <figcaption>
+        <strong>Clinical task categories in StethoBench.</strong> Examples of instructions (left)
+        and model responses (right) across all seven task types.
+      </figcaption>
+    </figure>
+    <div class="task-grid">
+      <div class="task-card"><div class="task-name">Classification</div><p>Binary detection of normal vs. abnormal sounds</p></div>
+      <div class="task-card"><div class="task-name">Detection</div><p>Identify specific acoustic events (e.g., wheeze, crackle, murmur)</p></div>
+      <div class="task-card"><div class="task-name">Reporting</div><p>Generate a structured clinical description of findings</p></div>
+      <div class="task-card"><div class="task-name">Reasoning</div><p>Explain the clinical significance of acoustic observations</p></div>
+      <div class="task-card"><div class="task-name">Diff. Diagnosis</div><p>Rank candidate diagnoses by likelihood from audio evidence</p></div>
+      <div class="task-card"><div class="task-name">Comparison</div><p>Compare findings across multiple recordings or time points</p></div>
+      <div class="task-card"><div class="task-name">Location</div><p>Identify the anatomical site of auscultation findings</p></div>
+    </div>
   </section>
 
   <!-- ANIMATION -->
@@ -345,14 +389,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Classification</td><td>48.6 / 4.9</td><td>33.6 / 7.6</td><td>49.0 / 2.5</td><td>46.4 / 7.5</td><td>51.3 / 31.3</td><td>49.3 / <span class="second">49.5</span></td><td><span class="second">58.9</span> / 31.0</td><td class="best">75.5 / 66.4</td></tr>
-            <tr><td>Detection</td><td>43.0 / 2.8</td><td>30.8 / 4.3</td><td>43.1 / 3.6</td><td>44.0 / 4.2</td><td>47.1 / 11.5</td><td>45.9 / 19.2</td><td><span class="second">52.5 / 22.0</span></td><td class="best">70.4 / 47.9</td></tr>
-            <tr><td>Reporting</td><td>41.1 / 2.2</td><td>30.7 / 4.1</td><td>45.1 / 2.0</td><td>44.7 / 2.0</td><td>47.5 / 9.2</td><td>49.8 / <span class="second">13.2</span></td><td><span class="second">56.7</span> / 12.7</td><td class="best">72.8 / 36.2</td></tr>
-            <tr><td>Reasoning</td><td>41.8 / 0.0</td><td>27.6 / 1.0</td><td>43.7 / 4.0</td><td>46.5 / 5.3</td><td>45.2 / 9.0</td><td>47.6 / 22.2</td><td><span class="second">55.6 / 29.0</span></td><td class="best">71.4 / 44.1</td></tr>
-            <tr><td>Diff. Diagnosis</td><td>42.3 / 3.3</td><td>26.6 / 4.1</td><td>44.9 / 4.0</td><td>44.6 / 4.0</td><td>44.5 / 3.7</td><td>43.6 / 13.2</td><td><span class="second">60.2 / 19.8</span></td><td class="best">67.7 / 30.6</td></tr>
-            <tr><td>Comparison</td><td>45.1 / 2.3</td><td>28.4 / 1.7</td><td>47.2 / 2.1</td><td>45.2 / 1.9</td><td>47.7 / 12.7</td><td>46.9 / 15.4</td><td><span class="second">57.8 / 22.7</span></td><td class="best">70.7 / 40.5</td></tr>
-            <tr><td>Location</td><td>44.4 / 4.3</td><td>26.4 / 1.1</td><td>46.4 / 4.4</td><td>46.0 / 2.2</td><td>49.0 / 11.0</td><td>45.6 / <span class="second">14.3</span></td><td><span class="second">54.6</span> / 11.3</td><td class="best">72.0 / 36.8</td></tr>
-            <tr style="border-top:2px solid var(--gray-2); font-weight:600;"><td>Overall</td><td>43.8 / 2.8</td><td>29.2 / 3.4</td><td>45.6 / 3.2</td><td>45.3 / 3.9</td><td>47.5 / 12.6</td><td>47.0 / 21.0</td><td><span class="second">56.5 / 21.2</span></td><td class="best">71.8 / 47.8</td></tr>
+            <tr><td>Classification</td><td>48.6 / 4.9</td><td>33.6 / 7.6</td><td>49.0 / 2.5</td><td>46.4 / 7.5</td><td>51.3 / 31.3</td><td>49.3 / <span class="u">49.5</span></td><td><span class="u">58.9</span> / 31.0</td><td><span class="b">75.5 / 66.4</span></td></tr>
+            <tr><td>Detection</td><td>43.0 / 2.8</td><td>30.8 / 4.3</td><td>43.1 / 3.6</td><td>44.0 / 4.2</td><td>47.1 / 11.5</td><td>45.9 / 19.2</td><td><span class="u">52.5 / 22.0</span></td><td><span class="b">70.4 / 47.9</span></td></tr>
+            <tr><td>Reporting</td><td>41.1 / 2.2</td><td>30.7 / 4.1</td><td>45.1 / 2.0</td><td>44.7 / 2.0</td><td>47.5 / 9.2</td><td>49.8 / <span class="u">13.2</span></td><td><span class="u">56.7</span> / 12.7</td><td><span class="b">72.8 / 36.2</span></td></tr>
+            <tr><td>Reasoning</td><td>41.8 / 0.0</td><td>27.6 / 1.0</td><td>43.7 / 4.0</td><td>46.5 / 5.3</td><td>45.2 / 9.0</td><td>47.6 / 22.2</td><td><span class="u">55.6 / 29.0</span></td><td><span class="b">71.4 / 44.1</span></td></tr>
+            <tr><td>Diff. Diagnosis</td><td>42.3 / 3.3</td><td>26.6 / 4.1</td><td>44.9 / 4.0</td><td>44.6 / 4.0</td><td>44.5 / 3.7</td><td>43.6 / 13.2</td><td><span class="u">60.2 / 19.8</span></td><td><span class="b">67.7 / 30.6</span></td></tr>
+            <tr><td>Comparison</td><td>45.1 / 2.3</td><td>28.4 / 1.7</td><td>47.2 / 2.1</td><td>45.2 / 1.9</td><td>47.7 / 12.7</td><td>46.9 / 15.4</td><td><span class="u">57.8 / 22.7</span></td><td><span class="b">70.7 / 40.5</span></td></tr>
+            <tr><td>Location</td><td>44.4 / 4.3</td><td>26.4 / 1.1</td><td>46.4 / 4.4</td><td>46.0 / 2.2</td><td>49.0 / 11.0</td><td>45.6 / <span class="u">14.3</span></td><td><span class="u">54.6</span> / 11.3</td><td><span class="b">72.0 / 36.8</span></td></tr>
+            <tr class="overall"><td>Overall</td><td>43.8 / 2.8</td><td>29.2 / 3.4</td><td>45.6 / 3.2</td><td>45.3 / 3.9</td><td>47.5 / 12.6</td><td>47.0 / 21.0</td><td><span class="u">56.5 / 21.2</span></td><td><span class="b">71.8 / 47.8</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -377,11 +421,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>TR</td><td>44.0 / 0.5</td><td>27.7 / 1.6</td><td>44.2 / 0.6</td><td>44.0 / 0.3</td><td>48.4 / 5.6</td><td>44.8 / 7.5</td><td><span class="second">60.7 / 17.7</span></td><td class="best">66.2 / 25.7</td></tr>
-            <tr><td>CinC</td><td>39.5 / 1.1</td><td>29.4 / 1.3</td><td>42.3 / 0.4</td><td>42.6 / 0.7</td><td>44.5 / 5.2</td><td>45.9 / <span class="second">21.5</span></td><td><span class="second">54.0</span> / 12.4</td><td class="best">63.3 / 22.2</td></tr>
-            <tr><td>BMD-HS</td><td>45.0 / 2.5</td><td>27.3 / 1.4</td><td>47.2 / 1.2</td><td>46.7 / 4.4</td><td>48.2 / 11.7</td><td>40.7 / <span class="second">20.9</span></td><td><span class="second">58.6</span> / 17.3</td><td class="best">67.3 / 30.4</td></tr>
-            <tr><td>FluSense</td><td>45.8 / 0.3</td><td>30.6 / 15.6</td><td>45.8 / 9.4</td><td>47.3 / 22.3</td><td>50.7 / 9.4</td><td>52.3 / 14.3</td><td><span class="second">59.4</span> / <span class="best">37.1</span></td><td class="best">61.5</td> / <span class="second">23.2</span></tr>
-            <tr style="border-top:2px solid var(--gray-2); font-weight:600;"><td>Overall</td><td>43.6 / 1.1</td><td>28.8 / 5.0</td><td>44.9 / 2.9</td><td>45.2 / 6.9</td><td>48.0 / 8.0</td><td>45.9 / 16.1</td><td><span class="second">58.2 / 21.1</span></td><td class="best">64.8 / 25.2</td></tr>
+            <tr><td>TR</td><td>44.0 / 0.5</td><td>27.7 / 1.6</td><td>44.2 / 0.6</td><td>44.0 / 0.3</td><td>48.4 / 5.6</td><td>44.8 / 7.5</td><td><span class="u">60.7 / 17.7</span></td><td><span class="b">66.2 / 25.7</span></td></tr>
+            <tr><td>CinC</td><td>39.5 / 1.1</td><td>29.4 / 1.3</td><td>42.3 / 0.4</td><td>42.6 / 0.7</td><td>44.5 / 5.2</td><td>45.9 / <span class="u">21.5</span></td><td><span class="u">54.0</span> / 12.4</td><td><span class="b">63.3 / 22.2</span></td></tr>
+            <tr><td>BMD-HS</td><td>45.0 / 2.5</td><td>27.3 / 1.4</td><td>47.2 / 1.2</td><td>46.7 / 4.4</td><td>48.2 / 11.7</td><td>40.7 / <span class="u">20.9</span></td><td><span class="u">58.6</span> / 17.3</td><td><span class="b">67.3 / 30.4</span></td></tr>
+            <tr><td>FluSense</td><td>45.8 / 0.3</td><td>30.6 / 15.6</td><td>45.8 / 9.4</td><td>47.3 / 22.3</td><td>50.7 / 9.4</td><td>52.3 / 14.3</td><td><span class="u">59.4</span> / <span class="b">37.1</span></td><td><span class="b">61.5</span> / <span class="u">23.2</span></td></tr>
+            <tr class="overall"><td>Overall</td><td>43.6 / 1.1</td><td>28.8 / 5.0</td><td>44.9 / 2.9</td><td>45.2 / 6.9</td><td>48.0 / 8.0</td><td>45.9 / 16.1</td><td><span class="u">58.2 / 21.1</span></td><td><span class="b">64.8 / 25.2</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -404,7 +448,7 @@
 </main>
 
 <footer>
-  Website template adapted for StethoLM &mdash; Eindhoven University of Technology
+  Eindhoven University of Technology &mdash; 2025
 </footer>
 
 <script>
