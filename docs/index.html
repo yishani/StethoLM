@@ -127,7 +127,15 @@
 
     /* ── FOOTER ───────────────────────────────────────────── */
     footer { text-align: center; font-size: 0.82rem; color: var(--gray-6); padding: 32px 20px; border-top: 1px solid var(--gray-2); }
+
+    /* ── MEDIA QUERIES ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .demo-body { grid-template-columns: 1fr; }
+      .demo-col + .demo-col { border-left: none; border-top: 1px solid var(--gray-2); }
+      .model-col { display: none; }
+    }
   </style>
+
 </head>
 <body>
 
@@ -155,8 +163,7 @@
 
   <!-- DEMO — first section -->
   <section id="demo">
-    <h2>Demo</h2>
-    <p>StethoLM takes a cardiopulmonary recording and a clinical question as input, and generates a natural-language clinical response.</p>
+    
 
     <div class="demo-shell" style="margin-top:20px;">
       <div class="demo-badge">
@@ -173,9 +180,9 @@
             <div class="audio-icon" id="d-icon">🫀</div>
             <div class="audio-label" id="d-label" style="color:#ef4444">Heart Sound</div>
             <svg class="waveform" id="d-wave" viewBox="0 0 120 34" preserveAspectRatio="none">
-              <path class="w1" d="M0,17 C10,4 20,30 30,17 C40,4 50,30 60,17 C70,4 80,30 90,17 C100,4 110,30 120,17"/>
-              <path class="w2" d="M0,17 C10,8 20,26 30,17 C40,8 50,26 60,17 C70,8 80,26 90,17 C100,8 110,26 120,17"/>
-              <path class="w3" d="M0,17 C10,12 20,22 30,17 C40,12 50,22 60,17 C70,12 80,22 90,17 C100,12 110,22 120,17"/>
+              <path class="w1" d="M0,17 L10,17 L15,0 L20,34 L25,17 L45,17 L50,8 L55,26 L60,17 L85,17 L90,-2 L95,36 L100,17 L120,17"/>
+              <path class="w2" d="M0,17 L8,17 L13,6 L18,28 L23,17 L43,17 L48,11 L53,23 L58,17 L83,17 L88,4 L93,30 L98,17 L120,17"/>
+              <path class="w3" d="M0,17 L12,17 L17,-5 L22,39 L27,17 L47,17 L52,5 L57,29 L62,17 L87,17 L92,-6 L97,40 L102,17 L120,17"/>
             </svg>
           </div>
           <!-- Text input -->
@@ -509,7 +516,10 @@ function load(i) {
   setTimeout(() => {
     setActive(3);
     typeResponse(ex.response, () => {
-      demoT = setTimeout(() => load(idx + 1), 3200);
+      const delay = Math.max(3000, ex.response.length * 40);
+      if (!isHovering) {
+        demoT = setTimeout(() => load(idx + 1), delay);
+      }
     });
   }, 2400);
 }
@@ -531,6 +541,19 @@ function typeResponse(text, onDone) {
 }
 
 function demoNav(dir) { clearT(); load(idx + dir); }
+
+
+
+
+let isHovering = false;
+const shell = document.querySelector('.demo-shell');
+shell.addEventListener('mouseenter', () => { isHovering = true; clearTimeout(demoT); });
+shell.addEventListener('mouseleave', () => { 
+  isHovering = false;
+  if (elR.innerHTML === EXAMPLES[idx].response) {
+    demoT = setTimeout(() => load(idx + 1), 1500);
+  }
+});
 
 load(0);
 </script>
