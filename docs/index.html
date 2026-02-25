@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StethoLM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #2563eb;
+      --gray-0: #f9fafb;
+      --gray-1: #f3f4f6;
+      --gray-2: #e5e7eb;
+      --gray-6: #4b5563;
+      --gray-8: #1f2937;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-8);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    header {
+      background: var(--gray-0);
+      border-bottom: 1px solid var(--gray-2);
+      padding: 60px 20px 48px;
+      text-align: center;
+    }
+
+    .venue {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 820px;
+      margin: 0 auto 24px;
+    }
+
+    .authors {
+      font-size: 1rem;
+      color: var(--gray-6);
+      margin-bottom: 8px;
+    }
+
+    .authors a {
+      color: var(--gray-8);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .authors a:hover { text-decoration: underline; }
+
+    .affil {
+      font-size: 0.88rem;
+      color: var(--gray-6);
+      margin-bottom: 28px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid var(--gray-2);
+      color: var(--gray-8);
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .btn:hover { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+    .btn-primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .btn-primary:hover { box-shadow: 0 0 0 3px rgba(37,99,235,.25); }
+
+    /* ── MAIN ─────────────────────────────────────────────── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    section { margin-top: 60px; }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gray-2);
+    }
+
+    p { margin-bottom: 12px; color: var(--gray-8); }
+
+    /* ── FIGURE ───────────────────────────────────────────── */
+    .fig-wrap {
+      margin: 24px 0;
+      background: var(--gray-0);
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .fig-wrap embed, .fig-wrap img {
+      display: block;
+      width: 100%;
+    }
+
+    figcaption {
+      font-size: 0.85rem;
+      color: var(--gray-6);
+      padding: 12px 16px;
+      border-top: 1px solid var(--gray-2);
+    }
+
+    /* ── RESULTS TABLE ────────────────────────────────────── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead { background: var(--gray-1); }
+
+    th, td {
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-2);
+      white-space: nowrap;
+    }
+
+    th { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    tr:last-child td { border-bottom: none; }
+    tr.highlight td { background: #eff6ff; font-weight: 600; }
+
+    /* ── ANIMATION PLACEHOLDER ────────────────────────────── */
+    .anim-placeholder {
+      background: var(--gray-1);
+      border: 2px dashed var(--gray-2);
+      border-radius: var(--radius);
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-6);
+      font-size: 0.9rem;
+    }
+
+    /* ── BIBTEX ───────────────────────────────────────────── */
+    pre {
+      background: var(--gray-1);
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      padding: 20px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray-6);
+      padding: 32px 20px;
+      border-top: 1px solid var(--gray-2);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<header>
+  <div class="venue">TMLR 2025</div>
+  <h1>StethoLM: Audio Language Model for Cardiopulmonary Analysis Across Clinical Tasks</h1>
+
+  <p class="authors">
+    <a href="https://openreview.net/profile?id=~Yishan_Wang1">Yishan Wang</a>,&ensp;
+    <a href="https://openreview.net/profile?id=~Tsai-Ning_Wang1">Tsai-Ning Wang</a>,&ensp;
+    <a href="https://openreview.net/profile?id=~Mathias_Funk1">Mathias Funk</a>,&ensp;
+    <a href="https://openreview.net/profile?id=~Aaqib_Saeed1">Aaqib Saeed</a>
+  </p>
+  <p class="affil">Eindhoven University of Technology</p>
+
+  <div class="links">
+    <a class="btn btn-primary" href="https://openreview.net/forum?id=i9RuUH9Jyj" target="_blank">
+      📄 Paper
+    </a>
+    <a class="btn" href="https://github.com/yishani/StethoLM" target="_blank">
+      💻 Code
+    </a>
+    <a class="btn" href="https://huggingface.co/datasets/askyishan/StethoBench" target="_blank">
+      🗂 Dataset
+    </a>
+    <a class="btn" href="https://huggingface.co/askyishan/StethoLM" target="_blank">
+      🤗 Model
+    </a>
+  </div>
+</header>
+
+<!-- ── MAIN ──────────────────────────────────────────────── -->
+<main>
+
+  <!-- ABSTRACT -->
+  <section id="abstract">
+    <h2>Abstract</h2>
+    <p>
+      Listening to heart and lung sounds — <em>auscultation</em> — is one of the first and most
+      fundamental steps in a clinical examination. Despite being fast and non-invasive, it demands
+      years of experience to interpret subtle audio cues. Recent deep learning methods have made
+      progress in automating cardiopulmonary sound analysis, yet most are restricted to simple
+      classification and offer little clinical interpretability or decision support.
+    </p>
+    <p>
+      We present <strong>StethoLM</strong>, the first audio–language model specialized for
+      cardiopulmonary auscultation, capable of performing instruction-driven clinical tasks across
+      the full spectrum of auscultation analysis. StethoLM integrates audio encoding with a medical
+      language model backbone and is trained on <strong>StethoBench</strong>, a comprehensive
+      benchmark comprising 77,027 instruction–response pairs synthesized from 16,125 labeled
+      cardiopulmonary recordings spanning seven clinical task categories: binary classification,
+      detection, reporting, reasoning, differential diagnosis, comparison, and location-based
+      analysis. Through multi-stage training that combines supervised fine-tuning and direct
+      preference optimization, StethoLM achieves substantial gains in performance and robustness on
+      out-of-distribution data. Our work establishes a foundation for instruction-following AI
+      systems in clinical auscultation.
+    </p>
+  </section>
+
+  <!-- OVERVIEW FIGURE -->
+  <section id="overview">
+    <h2>Overview</h2>
+    <figure class="fig-wrap">
+      <embed src="static/images/overview.pdf" type="application/pdf" height="480" />
+      <figcaption>
+        <strong>StethoLM architecture.</strong> A domain-adapted audio encoder (COLA) is connected
+        to MedGemma-4B-IT via an MLP prefix projector with LoRA fine-tuning, enabling
+        instruction-driven clinical reasoning over cardiopulmonary recordings.
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ANIMATION -->
+  <section id="demo">
+    <h2>Demo</h2>
+    <div class="anim-placeholder">
+      ✦ Animation coming soon
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results">
+    <h2>Results</h2>
+    <p>
+      StethoLM achieves <strong>71.8% BERTScore F1</strong> and <strong>47.8% clinical accuracy</strong>
+      on the in-domain StethoBench test set, outperforming all baselines including large-scale
+      general-purpose audio–language models.
+    </p>
+
+    <div class="table-wrap" style="margin-top:20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>In-domain BERTScore (%)</th>
+            <th>In-domain Accuracy (%)</th>
+            <th>OOD BERTScore (%)</th>
+            <th>OOD Accuracy (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Pengi</td><td>29.4</td><td>0.5</td><td>—</td><td>—</td></tr>
+          <tr><td>LTU</td><td>37.3</td><td>1.6</td><td>—</td><td>—</td></tr>
+          <tr><td>GAMA</td><td>44.5</td><td>3.7</td><td>—</td><td>—</td></tr>
+          <tr><td>MedGemma (text only)</td><td>43.8</td><td>2.8</td><td>—</td><td>—</td></tr>
+          <tr><td>Gemini-2.5-Flash</td><td>47.0</td><td>21.0</td><td>—</td><td>—</td></tr>
+          <tr><td>Qwen2.5-Omni</td><td>56.5</td><td>21.2</td><td>—</td><td>—</td></tr>
+          <tr class="highlight"><td>StethoLM (ours)</td><td>71.8</td><td>47.8</td><td>64.8</td><td>25.2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section id="citation">
+    <h2>Citation</h2>
+    <pre>@article{wang2025stetholm,
+  title   = {StethoLM: Audio Language Model for Cardiopulmonary Analysis Across Clinical Tasks},
+  author  = {Wang, Yishan and Wang, Tsai-Ning and Funk, Mathias and Saeed, Aaqib},
+  journal = {Transactions on Machine Learning Research},
+  year    = {2025},
+  url     = {https://openreview.net/forum?id=i9RuUH9Jyj}
+}</pre>
+  </section>
+
+</main>
+
+<footer>
+  Website template adapted for StethoLM &mdash; Eindhoven University of Technology
+</footer>
+
+</body>
+</html>
