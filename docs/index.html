@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --blue:   #2563eb;
       --gray-0: #f9fafb;
@@ -18,372 +17,116 @@
       --gray-8: #1f2937;
       --radius: 10px;
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--gray-8);
-      background: #fff;
-      line-height: 1.7;
-    }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-8); background: #fff; line-height: 1.7; }
 
     /* ── HERO ─────────────────────────────────────────────── */
-    header {
-      background: var(--gray-0);
-      border-bottom: 1px solid var(--gray-2);
-      padding: 60px 20px 48px;
-      text-align: center;
-    }
-
-    .venue {
-      display: inline-block;
-      background: var(--blue);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 4px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(1.6rem, 4vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.25;
-      max-width: 820px;
-      margin: 0 auto 24px;
-    }
-
-    .authors {
-      font-size: 1rem;
-      color: var(--gray-6);
-      margin-bottom: 8px;
-    }
-
-    .authors a {
-      color: var(--gray-8);
-      text-decoration: none;
-      font-weight: 500;
-    }
+    header { background: var(--gray-0); border-bottom: 1px solid var(--gray-2); padding: 60px 20px 48px; text-align: center; }
+    .venue { display: inline-block; background: var(--blue); color: #fff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; margin-bottom: 18px; }
+    h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.25; max-width: 820px; margin: 0 auto 24px; }
+    .authors { font-size: 1rem; color: var(--gray-6); margin-bottom: 8px; }
+    .authors a { color: var(--gray-8); text-decoration: none; font-weight: 500; }
     .authors a:hover { text-decoration: underline; }
-
-    .affil {
-      font-size: 0.88rem;
-      color: var(--gray-6);
-      margin-bottom: 28px;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1.5px solid var(--gray-2);
-      color: var(--gray-8);
-      background: #fff;
-      transition: border-color .15s, box-shadow .15s;
-    }
+    .affil { font-size: 0.88rem; color: var(--gray-6); margin-bottom: 28px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: 1.5px solid var(--gray-2); color: var(--gray-8); background: #fff; transition: border-color .15s, box-shadow .15s; }
     .btn:hover { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
     .btn-primary { background: var(--blue); color: #fff; border-color: var(--blue); }
     .btn-primary:hover { box-shadow: 0 0 0 3px rgba(37,99,235,.25); }
 
     /* ── MAIN ─────────────────────────────────────────────── */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px 80px;
-    }
-
+    main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
     section { margin-top: 60px; }
-
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--gray-2);
-    }
-
+    h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--gray-2); }
     p { margin-bottom: 12px; color: var(--gray-8); }
 
     /* ── FIGURE ───────────────────────────────────────────── */
-    .fig-wrap {
-      margin: 24px 0;
-      background: var(--gray-0);
-      border: 1px solid var(--gray-2);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .fig-wrap img {
-      display: block;
-      width: 100%;
-    }
-
-    figcaption {
-      font-size: 0.85rem;
-      color: var(--gray-6);
-      padding: 12px 16px;
-      border-top: 1px solid var(--gray-2);
-    }
+    .fig-wrap { margin: 24px 0; background: var(--gray-0); border: 1px solid var(--gray-2); border-radius: var(--radius); overflow: hidden; }
+    .fig-wrap img { display: block; width: 100%; }
+    figcaption { font-size: 0.85rem; color: var(--gray-6); padding: 12px 16px; border-top: 1px solid var(--gray-2); }
 
     /* ── TASK GRID ────────────────────────────────────────── */
-    .task-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
-    }
+    .task-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+    .task-card { background: var(--gray-0); border: 1px solid var(--gray-2); border-radius: var(--radius); padding: 14px 16px; }
+    .task-card .task-name { font-weight: 600; font-size: 0.88rem; margin-bottom: 4px; }
+    .task-card p { font-size: 0.8rem; color: var(--gray-6); margin: 0; line-height: 1.4; }
 
-    .task-card {
-      background: var(--gray-0);
-      border: 1px solid var(--gray-2);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-    }
-
-    .task-card .task-name {
-      font-weight: 600;
-      font-size: 0.88rem;
-      margin-bottom: 4px;
-    }
-
-    .task-card p {
-      font-size: 0.8rem;
-      color: var(--gray-6);
-      margin: 0;
-      line-height: 1.4;
-    }
-
-    /* ── DEMO ANIMATION ───────────────────────────────────── */
-    .demo-shell {
-      background: var(--gray-0);
-      border: 1px solid var(--gray-2);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .demo-badge {
-      background: #0f766e;
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 7px 16px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .demo-body {
-      display: grid;
-      grid-template-columns: 150px 1fr 1.6fr;
-      min-height: 190px;
-    }
-    .demo-col {
-      padding: 20px 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    /* ── DEMO ─────────────────────────────────────────────── */
+    .demo-shell { background: var(--gray-0); border: 1px solid var(--gray-2); border-radius: 14px; overflow: hidden; }
+    .demo-badge { background: #0f766e; color: #fff; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 8px 16px; display: flex; align-items: center; gap: 8px; }
+    .demo-body { display: grid; grid-template-columns: 1fr 180px 1fr; min-height: 240px; }
+    .demo-col { padding: 22px 18px; display: flex; flex-direction: column; justify-content: center; }
     .demo-col + .demo-col { border-left: 1px solid var(--gray-2); }
-    .audio-icon { font-size: 2.6rem; line-height: 1; margin-bottom: 8px; }
-    .audio-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-    }
-    .waveform { width: 100%; height: 38px; overflow: visible; }
+
+    /* Input col */
+    .input-audio { display: flex; flex-direction: column; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--gray-2); }
+    .audio-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 6px; }
+    .audio-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+    .waveform { width: 100%; height: 34px; overflow: visible; }
     .waveform path { fill: none; stroke-width: 2.2; stroke-linecap: round; }
     .waveform path.w1 { animation: wave 1.4s ease-in-out infinite; }
-    .waveform path.w2 { animation: wave 1.4s ease-in-out infinite .2s; opacity:.55; }
-    .waveform path.w3 { animation: wave 1.4s ease-in-out infinite .4s; opacity:.28; }
-    @keyframes wave {
-      0%,100% { transform: scaleY(1); transform-origin: center; }
-      50%      { transform: scaleY(1.7); transform-origin: center; }
-    }
-    .model-name { font-size: 0.82rem; font-weight: 700; margin-bottom: 2px; }
-    .model-sub  { font-size: 0.7rem; color: var(--gray-6); margin-bottom: 14px; }
-    .proc-dots { display: flex; gap: 5px; opacity: 0; transition: opacity .3s; height: 14px; }
-    .proc-dots.on { opacity: 1; }
-    .proc-dots span {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--blue);
-      animation: dp 1.2s ease-in-out infinite;
-    }
-    .proc-dots span:nth-child(2) { animation-delay: .2s; }
-    .proc-dots span:nth-child(3) { animation-delay: .4s; }
-    @keyframes dp {
-      0%,80%,100% { transform:scale(.65); opacity:.35; }
-      40%          { transform:scale(1);   opacity:1; }
-    }
-    .task-pill {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 2px 9px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-      opacity: 0;
-      transition: opacity .5s;
-      width: fit-content;
-    }
-    .task-pill.on { opacity: 1; }
-    .demo-q {
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--gray-8);
-      margin-bottom: 10px;
-      min-height: 2.4em;
-      opacity: 0;
-      transition: opacity .5s .2s;
-    }
+    .waveform path.w2 { animation: wave 1.4s ease-in-out infinite .2s; opacity:.5; }
+    .waveform path.w3 { animation: wave 1.4s ease-in-out infinite .4s; opacity:.25; }
+    @keyframes wave { 0%,100% { transform:scaleY(1); transform-origin:center; } 50% { transform:scaleY(1.7); transform-origin:center; } }
+
+    .input-text {}
+    .input-text-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray-6); margin-bottom: 5px; }
+    .demo-q { font-size: 0.8rem; font-weight: 600; color: var(--gray-8); line-height: 1.45; opacity: 0; transition: opacity .5s .3s; min-height: 2.2em; }
     .demo-q.on { opacity: 1; }
-    .demo-r {
-      font-size: 0.82rem;
-      color: var(--gray-6);
-      line-height: 1.58;
-      border-left: 3px solid var(--gray-2);
-      padding-left: 10px;
-      min-height: 3.6em;
-      transition: border-color .5s;
-    }
-    .cursor {
-      display: inline-block;
-      width: 2px; height: .9em;
-      background: var(--gray-6);
-      vertical-align: text-bottom;
-      margin-left: 1px;
-      animation: blink .7s step-end infinite;
-    }
+
+    /* Model col — SVG architecture */
+    .model-col { align-items: center; background: #fff; position: relative; }
+    .arch-svg { width: 100%; max-width: 150px; }
+    /* box labels */
+    .arch-box { fill: var(--gray-1); stroke: var(--gray-2); stroke-width: 1.5; rx: 6; }
+    .arch-box.active { fill: #eff6ff; stroke: var(--blue); }
+    .arch-text { font-family: 'Inter', sans-serif; font-size: 7px; font-weight: 600; fill: var(--gray-8); text-anchor: middle; dominant-baseline: middle; }
+    .arch-sub  { font-family: 'Inter', sans-serif; font-size: 5.5px; fill: var(--gray-6); text-anchor: middle; dominant-baseline: middle; }
+    .arch-arrow { stroke: var(--gray-2); stroke-width: 1.5; fill: none; marker-end: url(#arr); }
+    .arch-arrow.lit { stroke: var(--blue); }
+    /* animated flow particle */
+    .flow-dot { fill: var(--blue); opacity: 0; }
+    .flow-dot.run { animation: flow-down 0.9s ease-in forwards; }
+    @keyframes flow-down { 0% { opacity:1; transform:translateY(0);  } 100% { opacity:0; transform:translateY(22px); } }
+
+    /* Output col */
+    .task-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; opacity: 0; transition: opacity .4s; width: fit-content; }
+    .task-pill.on { opacity: 1; }
+    .demo-r { font-size: 0.8rem; color: var(--gray-6); line-height: 1.58; border-left: 3px solid var(--gray-2); padding-left: 10px; min-height: 4em; transition: border-color .5s; }
+    .cursor { display: inline-block; width: 2px; height: .9em; background: var(--gray-6); vertical-align: text-bottom; margin-left: 1px; animation: blink .7s step-end infinite; }
     @keyframes blink { 50% { opacity:0; } }
-    .demo-footer {
-      border-top: 1px solid var(--gray-2);
-      padding: 10px 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+
+    /* Footer nav */
+    .demo-footer { border-top: 1px solid var(--gray-2); padding: 10px 18px; display: flex; align-items: center; gap: 10px; }
     .demo-dots { display: flex; gap: 6px; flex: 1; }
-    .demo-dot  { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-2); cursor: pointer; transition: background .2s; }
+    .demo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-2); cursor: pointer; transition: background .2s; }
     .demo-dot.on { background: var(--blue); }
-    .demo-nav button {
-      padding: 4px 12px;
-      border-radius: 5px;
-      border: 1.5px solid var(--gray-2);
-      background: #fff;
-      font-size: 0.8rem;
-      cursor: pointer;
-      color: var(--gray-6);
-      transition: border-color .15s, color .15s;
-    }
+    .demo-nav button { padding: 4px 12px; border-radius: 5px; border: 1.5px solid var(--gray-2); background: #fff; font-size: 0.8rem; cursor: pointer; color: var(--gray-6); transition: border-color .15s, color .15s; }
     .demo-nav button:hover { border-color: var(--blue); color: var(--blue); }
     .demo-disclaimer { font-size: 0.7rem; color: var(--gray-6); margin-top: 8px; font-style: italic; }
 
     /* ── RESULTS TABLE ────────────────────────────────────── */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius);
-      border: 1px solid var(--gray-2);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
+    .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--gray-2); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
     thead { background: var(--gray-1); }
-
-    th, td {
-      padding: 9px 14px;
-      text-align: left;
-      border-bottom: 1px solid var(--gray-2);
-      white-space: nowrap;
-    }
-
+    th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--gray-2); white-space: nowrap; }
     th { font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
-
     tr:last-child td { border-bottom: none; }
     tr.overall { border-top: 2px solid var(--gray-2); }
-
-    .b  { font-weight: 700; }
-    .u  { text-decoration: underline; }
+    .b { font-weight: 700; }
+    .u { text-decoration: underline; }
 
     /* ── TABS ─────────────────────────────────────────────── */
-    .tab-bar {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 16px;
-    }
-
-    .tab-btn {
-      padding: 6px 18px;
-      border-radius: 6px;
-      border: 1.5px solid var(--gray-2);
-      background: #fff;
-      font-size: 0.88rem;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--gray-6);
-      transition: all .15s;
-    }
-    .tab-btn.active {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
-
+    .tab-bar { display: flex; gap: 4px; margin-bottom: 16px; }
+    .tab-btn { padding: 6px 18px; border-radius: 6px; border: 1.5px solid var(--gray-2); background: #fff; font-size: 0.88rem; font-weight: 500; cursor: pointer; color: var(--gray-6); transition: all .15s; }
+    .tab-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── ANIMATION PLACEHOLDER ────────────────────────────── */
-    .anim-placeholder {
-      background: var(--gray-1);
-      border: 2px dashed var(--gray-2);
-      border-radius: var(--radius);
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-6);
-      font-size: 0.9rem;
-    }
-
     /* ── BIBTEX ───────────────────────────────────────────── */
-    pre {
-      background: var(--gray-1);
-      border: 1px solid var(--gray-2);
-      border-radius: var(--radius);
-      padding: 20px;
-      font-family: 'Source Code Pro', monospace;
-      font-size: 0.82rem;
-      line-height: 1.6;
-      overflow-x: auto;
-      white-space: pre;
-    }
+    pre { background: var(--gray-1); border: 1px solid var(--gray-2); border-radius: var(--radius); padding: 20px; font-family: 'Source Code Pro', monospace; font-size: 0.82rem; line-height: 1.6; overflow-x: auto; white-space: pre; }
 
     /* ── FOOTER ───────────────────────────────────────────── */
-    footer {
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--gray-6);
-      padding: 32px 20px;
-      border-top: 1px solid var(--gray-2);
-    }
+    footer { text-align: center; font-size: 0.82rem; color: var(--gray-6); padding: 32px 20px; border-top: 1px solid var(--gray-2); }
   </style>
 </head>
 <body>
@@ -392,7 +135,6 @@
 <header>
   <div class="venue">TMLR 2025</div>
   <h1>StethoLM: Audio Language Model for Cardiopulmonary Analysis Across Clinical Tasks</h1>
-
   <p class="authors">
     <a href="https://openreview.net/profile?id=~Yishan_Wang1">Yishan Wang</a>,&ensp;
     <a href="https://openreview.net/profile?id=~Tsai-Ning_Wang1">Tsai-Ning Wang</a>,&ensp;
@@ -400,7 +142,6 @@
     <a href="https://openreview.net/profile?id=~Aaqib_Saeed1">Aaqib Saeed</a>
   </p>
   <p class="affil">Eindhoven University of Technology</p>
-
   <div class="links">
     <a class="btn btn-primary" href="https://openreview.net/forum?id=i9RuUH9Jyj" target="_blank">📄 Paper</a>
     <a class="btn" href="https://github.com/yishani/StethoLM" target="_blank">💻 Code</a>
@@ -411,6 +152,100 @@
 
 <!-- ── MAIN ──────────────────────────────────────────────── -->
 <main>
+
+  <!-- DEMO — first section -->
+  <section id="demo">
+    <h2>Demo</h2>
+    <p>StethoLM takes a cardiopulmonary recording and a clinical question as input, and generates a natural-language clinical response.</p>
+
+    <div class="demo-shell" style="margin-top:20px;">
+      <div class="demo-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        Clinical Decision Support &nbsp;·&nbsp; StethoLM
+      </div>
+
+      <div class="demo-body">
+
+        <!-- INPUT PANEL -->
+        <div class="demo-col">
+          <!-- Audio input -->
+          <div class="input-audio">
+            <div class="audio-icon" id="d-icon">🫀</div>
+            <div class="audio-label" id="d-label" style="color:#ef4444">Heart Sound</div>
+            <svg class="waveform" id="d-wave" viewBox="0 0 120 34" preserveAspectRatio="none">
+              <path class="w1" d="M0,17 C10,4 20,30 30,17 C40,4 50,30 60,17 C70,4 80,30 90,17 C100,4 110,30 120,17"/>
+              <path class="w2" d="M0,17 C10,8 20,26 30,17 C40,8 50,26 60,17 C70,8 80,26 90,17 C100,8 110,26 120,17"/>
+              <path class="w3" d="M0,17 C10,12 20,22 30,17 C40,12 50,22 60,17 C70,12 80,22 90,17 C100,12 110,22 120,17"/>
+            </svg>
+          </div>
+          <!-- Text input -->
+          <div class="input-text">
+            <div class="input-text-label">Clinical Question</div>
+            <div class="demo-q" id="d-q"></div>
+          </div>
+        </div>
+
+        <!-- MODEL PANEL -->
+        <div class="demo-col model-col">
+          <svg class="arch-svg" id="arch-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L6,3 z" fill="#d1d5db"/>
+              </marker>
+              <marker id="arr-lit" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L6,3 z" fill="#2563eb"/>
+              </marker>
+            </defs>
+
+            <!-- COLA box -->
+            <rect id="box1" x="10" y="8" width="100" height="34" rx="6" class="arch-box"/>
+            <text x="60" y="21" class="arch-text">🔊 Audio Encoder</text>
+            <text x="60" y="31" class="arch-sub">COLA</text>
+
+            <!-- Arrow 1 -->
+            <line id="arr1" x1="60" y1="42" x2="60" y2="68" class="arch-arrow" marker-end="url(#arr)"/>
+            <!-- Flow particle 1 -->
+            <circle id="fp1" class="flow-dot" cx="60" cy="48" r="3.5"/>
+
+            <!-- MLP box -->
+            <rect id="box2" x="10" y="72" width="100" height="34" rx="6" class="arch-box"/>
+            <text x="60" y="85" class="arch-text">🔗 Prefix Projector</text>
+            <text x="60" y="95" class="arch-sub">MLP</text>
+
+            <!-- Arrow 2 -->
+            <line id="arr2" x1="60" y1="106" x2="60" y2="132" class="arch-arrow" marker-end="url(#arr)"/>
+            <!-- Flow particle 2 -->
+            <circle id="fp2" class="flow-dot" cx="60" cy="112" r="3.5"/>
+
+            <!-- Text input arrow entering from left at LLM level -->
+            <line id="arr3" x1="0" y1="149" x2="9" y2="149" class="arch-arrow" marker-end="url(#arr)"/>
+            <text x="-2" y="144" style="font-family:Inter,sans-serif;font-size:5px;fill:#9ca3af;text-anchor:start">text</text>
+
+            <!-- LLM box -->
+            <rect id="box3" x="10" y="136" width="100" height="34" rx="6" class="arch-box"/>
+            <text x="60" y="149" class="arch-text">🧠 Language Model</text>
+            <text x="60" y="159" class="arch-sub">MedGemma-4B-IT</text>
+          </svg>
+        </div>
+
+        <!-- OUTPUT PANEL -->
+        <div class="demo-col">
+          <div class="task-pill" id="d-task">Classification</div>
+          <div class="demo-r" id="d-r"><span class="cursor"></span></div>
+        </div>
+
+      </div>
+
+      <div class="demo-footer">
+        <div class="demo-dots" id="d-dots-nav"></div>
+        <div class="demo-nav">
+          <button onclick="demoNav(-1)">&#8592;</button>
+          <button onclick="demoNav(+1)">&#8594;</button>
+        </div>
+      </div>
+    </div>
+    <p class="demo-disclaimer">* Outputs are model-generated responses for research purposes only and not intended for clinical deployment.</p>
+  </section>
 
   <!-- ABSTRACT -->
   <section id="abstract">
@@ -474,54 +309,6 @@
     </div>
   </section>
 
-  <!-- DEMO ANIMATION -->
-  <section id="demo">
-    <h2>Demo</h2>
-    <p>StethoLM takes a cardiopulmonary recording and a clinical question as input, and generates a natural-language response for decision support.</p>
-
-    <div class="demo-shell" style="margin-top:20px;">
-      <div class="demo-badge">🩺 Clinical Decision Support &nbsp;·&nbsp; StethoLM</div>
-
-      <div class="demo-body">
-        <!-- Audio panel -->
-        <div class="demo-col">
-          <div class="audio-icon" id="d-icon">🫀</div>
-          <div class="audio-label" id="d-label">Heart Sound</div>
-          <svg class="waveform" id="d-wave" viewBox="0 0 120 38" preserveAspectRatio="none">
-            <path class="w1" id="wp1" d="M0,19 C10,5 20,33 30,19 C40,5 50,33 60,19 C70,5 80,33 90,19 C100,5 110,33 120,19"/>
-            <path class="w2" id="wp2" d="M0,19 C10,9 20,29 30,19 C40,9 50,29 60,19 C70,9 80,29 90,19 C100,9 110,29 120,19"/>
-            <path class="w3" id="wp3" d="M0,19 C10,13 20,25 30,19 C40,13 50,25 60,19 C70,13 80,25 90,19 C100,13 110,25 120,19"/>
-          </svg>
-        </div>
-
-        <!-- Model panel -->
-        <div class="demo-col">
-          <div class="model-name">StethoLM</div>
-          <div class="model-sub">Audio Language Model</div>
-          <div class="proc-dots" id="d-dots">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-
-        <!-- Response panel -->
-        <div class="demo-col">
-          <div class="task-pill" id="d-task">Classification</div>
-          <div class="demo-q" id="d-q"></div>
-          <div class="demo-r" id="d-r"><span class="cursor"></span></div>
-        </div>
-      </div>
-
-      <div class="demo-footer">
-        <div class="demo-dots" id="d-dots-nav"></div>
-        <div class="demo-nav">
-          <button onclick="demoNav(-1)">&#8592;</button>
-          <button onclick="demoNav(+1)">&#8594;</button>
-        </div>
-      </div>
-    </div>
-    <p class="demo-disclaimer">* Outputs shown are model-generated responses for research purposes only and are not intended for clinical deployment.</p>
-  </section>
-
   <!-- RESULTS -->
   <section id="results">
     <h2>Results</h2>
@@ -530,29 +317,25 @@
       on StethoBench, outperforming all baselines. On four out-of-domain datasets it achieves
       <strong>64.8% BERTScore</strong> and <strong>25.2% accuracy</strong>, ranking first on three of four benchmarks.
     </p>
-
     <div class="tab-bar" style="margin-top:20px;">
       <button class="tab-btn active" onclick="switchTab(event,'in-domain')">In-Domain</button>
       <button class="tab-btn"        onclick="switchTab(event,'ood')">Out-of-Domain</button>
     </div>
-
     <!-- IN-DOMAIN -->
     <div id="in-domain" class="tab-panel active">
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>LLM<br/><small>BertS / Acc</small></th>
-              <th>Pengi<br/><small>BertS / Acc</small></th>
-              <th>LTU<br/><small>BertS / Acc</small></th>
-              <th>GAMA<br/><small>BertS / Acc</small></th>
-              <th>Gemma3N<br/><small>BertS / Acc</small></th>
-              <th>Gemini<br/><small>BertS / Acc</small></th>
-              <th>Qwen2.5-Omni<br/><small>BertS / Acc</small></th>
-              <th>StethoLM<br/><small>BertS / Acc</small></th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th>Task</th>
+            <th>LLM<br/><small>BertS / Acc</small></th>
+            <th>Pengi<br/><small>BertS / Acc</small></th>
+            <th>LTU<br/><small>BertS / Acc</small></th>
+            <th>GAMA<br/><small>BertS / Acc</small></th>
+            <th>Gemma3N<br/><small>BertS / Acc</small></th>
+            <th>Gemini-2.5-Flash<br/><small>BertS / Acc</small></th>
+            <th>Qwen2.5-Omni<br/><small>BertS / Acc</small></th>
+            <th>StethoLM<br/><small>BertS / Acc</small></th>
+          </tr></thead>
           <tbody>
             <tr><td>Classification</td><td>48.6 / 4.9</td><td>33.6 / 7.6</td><td>49.0 / 2.5</td><td>46.4 / 7.5</td><td>51.3 / 31.3</td><td>49.3 / <span class="u">49.5</span></td><td><span class="u">58.9</span> / 31.0</td><td><span class="b">75.5 / 66.4</span></td></tr>
             <tr><td>Detection</td><td>43.0 / 2.8</td><td>30.8 / 4.3</td><td>43.1 / 3.6</td><td>44.0 / 4.2</td><td>47.1 / 11.5</td><td>45.9 / 19.2</td><td><span class="u">52.5 / 22.0</span></td><td><span class="b">70.4 / 47.9</span></td></tr>
@@ -565,26 +348,23 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:0.82rem; color:var(--gray-6); margin-top:8px;">BertS = BERTScore F1 (%), Acc = clinical accuracy (%). <strong>Bold</strong> = best, <u>underline</u> = second best.</p>
+      <p style="font-size:0.82rem;color:var(--gray-6);margin-top:8px;">BertS = BERTScore F1 (%), Acc = clinical accuracy (%). <strong>Bold</strong> = best, <u>underline</u> = second best.</p>
     </div>
-
     <!-- OOD -->
     <div id="ood" class="tab-panel">
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Dataset</th>
-              <th>LLM<br/><small>BertS / Acc</small></th>
-              <th>Pengi<br/><small>BertS / Acc</small></th>
-              <th>LTU<br/><small>BertS / Acc</small></th>
-              <th>GAMA<br/><small>BertS / Acc</small></th>
-              <th>Gemma3N<br/><small>BertS / Acc</small></th>
-              <th>Gemini<br/><small>BertS / Acc</small></th>
-              <th>Qwen2.5-Omni<br/><small>BertS / Acc</small></th>
-              <th>StethoLM<br/><small>BertS / Acc</small></th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th>Dataset</th>
+            <th>LLM<br/><small>BertS / Acc</small></th>
+            <th>Pengi<br/><small>BertS / Acc</small></th>
+            <th>LTU<br/><small>BertS / Acc</small></th>
+            <th>GAMA<br/><small>BertS / Acc</small></th>
+            <th>Gemma3N<br/><small>BertS / Acc</small></th>
+            <th>Gemini-2.5-Flash<br/><small>BertS / Acc</small></th>
+            <th>Qwen2.5-Omni<br/><small>BertS / Acc</small></th>
+            <th>StethoLM<br/><small>BertS / Acc</small></th>
+          </tr></thead>
           <tbody>
             <tr><td>TR</td><td>44.0 / 0.5</td><td>27.7 / 1.6</td><td>44.2 / 0.6</td><td>44.0 / 0.3</td><td>48.4 / 5.6</td><td>44.8 / 7.5</td><td><span class="u">60.7 / 17.7</span></td><td><span class="b">66.2 / 25.7</span></td></tr>
             <tr><td>CinC</td><td>39.5 / 1.1</td><td>29.4 / 1.3</td><td>42.3 / 0.4</td><td>42.6 / 0.7</td><td>44.5 / 5.2</td><td>45.9 / <span class="u">21.5</span></td><td><span class="u">54.0</span> / 12.4</td><td><span class="b">63.3 / 22.2</span></td></tr>
@@ -594,7 +374,7 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:0.82rem; color:var(--gray-6); margin-top:8px;">BertS = BERTScore F1 (%), Acc = clinical accuracy (%). <strong>Bold</strong> = best, <u>underline</u> = second best.</p>
+      <p style="font-size:0.82rem;color:var(--gray-6);margin-top:8px;">BertS = BERTScore F1 (%), Acc = clinical accuracy (%). <strong>Bold</strong> = best, <u>underline</u> = second best.</p>
     </div>
   </section>
 
@@ -612,158 +392,147 @@
 
 </main>
 
-<footer>
-  Eindhoven University of Technology &mdash; 2025
-</footer>
+<footer>Eindhoven University of Technology &mdash; 2025</footer>
 
 <script>
-  /* ── Tab switcher ─────────────────────────────────────── */
-  function switchTab(e, id) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    document.getElementById(id).classList.add('active');
-  }
+/* ── Tab switcher ─────────────────────────────────────────── */
+function switchTab(e, id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
 
-  /* ── Demo animation ───────────────────────────────────── */
-  const EXAMPLES = [
-    {
-      type: 'heart', icon: '🫀', label: 'Heart Sound',
-      color: '#ef4444', taskColor: '#fef2f2', taskTextColor: '#b91c1c',
-      task: 'Binary Classification',
-      question: 'Is this heart sound normal or abnormal?',
-      response: 'The heart sound is abnormal.'
-    },
-    {
-      type: 'lung', icon: '🫁', label: 'Lung Sound',
-      color: '#3b82f6', taskColor: '#eff6ff', taskTextColor: '#1d4ed8',
-      task: 'Detection',
-      question: 'What is the primary sound event in this audio?',
-      response: 'The recording exhibits expiratory wheezes.'
-    },
-    {
-      type: 'lung', icon: '🫁', label: 'Lung Sound',
-      color: '#0891b2', taskColor: '#ecfeff', taskTextColor: '#0e7490',
-      task: 'Reporting',
-      question: 'Generate a brief summary of the lung sound findings.',
-      response: 'The lung sound shows coarse crackles and bronchial breathing in the left posterior region, consistent with bronchiectasis.'
-    },
-    {
-      type: 'lung', icon: '🫁', label: 'Lung Sound',
-      color: '#7c3aed', taskColor: '#f5f3ff', taskTextColor: '#5b21b6',
-      task: 'Differential Diagnosis',
-      question: 'Discuss potential causes for the lung sound abnormalities.',
-      response: 'The wheezing heard could be caused by asthma. Other potential causes, though less likely, could include bronchitis or localized airway obstruction.'
-    },
-    {
-      type: 'heart', icon: '🫀', label: 'Heart Sound',
-      color: '#d97706', taskColor: '#fffbeb', taskTextColor: '#92400e',
-      task: 'Reasoning',
-      question: 'Provide a diagnosis and explain your reasoning.',
-      response: 'Upper infection. Wheezing and dry cough indicate inflammation in the upper airway.'
-    },
-    {
-      type: 'lung', icon: '🫁', label: 'Lung Sound',
-      color: '#059669', taskColor: '#ecfdf5', taskTextColor: '#065f46',
-      task: 'Location-based Analysis',
-      question: "What is the significance of the location 'lateral right' in this case?",
-      response: 'The lateral right location indicates that the bronchiolitis is affecting the right lower or middle lobe, which may correlate with the distribution of viral infection in that area.'
+/* ── Demo ─────────────────────────────────────────────────── */
+const EXAMPLES = [
+  { icon:'🫀', label:'Heart Sound', color:'#ef4444',
+    taskBg:'#fef2f2', taskFg:'#b91c1c', task:'Binary Classification',
+    question:'Is this heart sound normal or abnormal?',
+    response:'The heart sound is abnormal.' },
+  { icon:'🫁', label:'Lung Sound', color:'#3b82f6',
+    taskBg:'#eff6ff', taskFg:'#1d4ed8', task:'Detection',
+    question:'What is the primary sound event in this audio?',
+    response:'The recording exhibits expiratory wheezes.' },
+  { icon:'🫁', label:'Lung Sound', color:'#0891b2',
+    taskBg:'#ecfeff', taskFg:'#0e7490', task:'Reporting',
+    question:'Generate a brief summary of the lung sound findings.',
+    response:'The lung sound shows coarse crackles and bronchial breathing in the left posterior region, consistent with bronchiectasis.' },
+  { icon:'🫁', label:'Lung Sound', color:'#7c3aed',
+    taskBg:'#f5f3ff', taskFg:'#5b21b6', task:'Differential Diagnosis',
+    question:'Discuss potential causes for the lung sound abnormalities.',
+    response:'The wheezing heard could be caused by asthma. Other potential causes, though less likely, could include bronchitis or localized airway obstruction.' },
+  { icon:'🫀', label:'Heart Sound', color:'#d97706',
+    taskBg:'#fffbeb', taskFg:'#92400e', task:'Reasoning',
+    question:'Provide a diagnosis and explain your reasoning.',
+    response:'Upper infection. Wheezing and dry cough indicate inflammation in the upper airway.' },
+  { icon:'🫁', label:'Lung Sound', color:'#059669',
+    taskBg:'#ecfdf5', taskFg:'#065f46', task:'Location-based Analysis',
+    question:"What is the significance of the location 'lateral right' in this case?",
+    response:'The lateral right location indicates that the bronchiolitis is affecting the right lower or middle lobe, which may correlate with the distribution of viral infection in that area.' },
+];
+
+let idx = 0, demoT = null, typeT = null;
+
+const elIcon  = document.getElementById('d-icon');
+const elLabel = document.getElementById('d-label');
+const elWave  = document.getElementById('d-wave');
+const elQ     = document.getElementById('d-q');
+const elTask  = document.getElementById('d-task');
+const elR     = document.getElementById('d-r');
+const elNav   = document.getElementById('d-dots-nav');
+const fp1     = document.getElementById('fp1');
+const fp2     = document.getElementById('fp2');
+const box1    = document.getElementById('box1');
+const box2    = document.getElementById('box2');
+const box3    = document.getElementById('box3');
+const arr1    = document.getElementById('arr1');
+const arr2    = document.getElementById('arr2');
+
+// Build nav dots
+EXAMPLES.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'demo-dot' + (i===0?' on':'');
+  d.onclick = () => { clearT(); load(i); };
+  elNav.appendChild(d);
+});
+
+function clearT() { clearTimeout(demoT); clearTimeout(typeT); }
+
+function setActive(active) {
+  [box1, box2, box3].forEach(b => b.classList.remove('active'));
+  [arr1, arr2].forEach(a => { a.classList.remove('lit'); a.setAttribute('marker-end','url(#arr)'); });
+  if (active === 1) { box1.classList.add('active'); }
+  if (active === 2) { box1.classList.add('active'); arr1.classList.add('lit'); arr1.setAttribute('marker-end','url(#arr-lit)'); box2.classList.add('active'); }
+  if (active === 3) { box1.classList.add('active'); arr1.classList.add('lit'); arr1.setAttribute('marker-end','url(#arr-lit)'); box2.classList.add('active'); arr2.classList.add('lit'); arr2.setAttribute('marker-end','url(#arr-lit)'); box3.classList.add('active'); }
+}
+
+function fireParticle(el, delay) {
+  setTimeout(() => {
+    el.classList.remove('run');
+    void el.offsetWidth; // reflow
+    el.classList.add('run');
+  }, delay);
+}
+
+function load(i) {
+  idx = ((i % EXAMPLES.length) + EXAMPLES.length) % EXAMPLES.length;
+  const ex = EXAMPLES[idx];
+
+  // Reset
+  elQ.classList.remove('on');
+  elTask.classList.remove('on');
+  elR.innerHTML = '<span class="cursor"></span>';
+  setActive(0);
+
+  // Audio panel
+  elIcon.textContent  = ex.icon;
+  elLabel.textContent = ex.label;
+  elLabel.style.color = ex.color;
+  elWave.querySelectorAll('path').forEach(p => p.style.stroke = ex.color);
+  fp1.style.fill = ex.color;
+  fp2.style.fill = ex.color;
+
+  // Output
+  elTask.textContent        = ex.task;
+  elTask.style.background   = ex.taskBg;
+  elTask.style.color        = ex.taskFg;
+  elR.style.borderColor     = ex.color;
+  elQ.textContent           = ex.question;
+
+  // Nav dots
+  elNav.querySelectorAll('.demo-dot').forEach((d,j) => d.classList.toggle('on', j===idx));
+
+  // Sequence
+  setTimeout(() => { elQ.classList.add('on'); setActive(1); }, 300);
+  setTimeout(() => { elTask.classList.add('on'); setActive(2); fireParticle(fp1, 0); }, 1000);
+  setTimeout(() => { setActive(3); fireParticle(fp2, 0); }, 1700);
+  setTimeout(() => {
+    setActive(3);
+    typeResponse(ex.response, () => {
+      demoT = setTimeout(() => load(idx + 1), 3200);
+    });
+  }, 2400);
+}
+
+function typeResponse(text, onDone) {
+  elR.innerHTML = '<span class="cursor"></span>';
+  let i = 0;
+  function step() {
+    if (i <= text.length) {
+      elR.innerHTML = text.slice(0, i) + '<span class="cursor"></span>';
+      i++;
+      typeT = setTimeout(step, i < 4 ? 60 : 26);
+    } else {
+      elR.innerHTML = text;
+      if (onDone) onDone();
     }
-  ];
-
-  let demoIdx = 0;
-  let demoTimer = null;
-  let typeTimer = null;
-  let demoRunning = false;
-
-  const elIcon  = document.getElementById('d-icon');
-  const elLabel = document.getElementById('d-label');
-  const elWave  = document.getElementById('d-wave');
-  const elDots  = document.getElementById('d-dots');
-  const elTask  = document.getElementById('d-task');
-  const elQ     = document.getElementById('d-q');
-  const elR     = document.getElementById('d-r');
-  const elNav   = document.getElementById('d-dots-nav');
-
-  // Build nav dots
-  EXAMPLES.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'demo-dot' + (i === 0 ? ' on' : '');
-    d.onclick = () => { clearTimers(); loadExample(i); };
-    elNav.appendChild(d);
-  });
-
-  function clearTimers() {
-    clearTimeout(demoTimer);
-    clearTimeout(typeTimer);
   }
+  step();
+}
 
-  function loadExample(idx) {
-    demoIdx = ((idx % EXAMPLES.length) + EXAMPLES.length) % EXAMPLES.length;
-    const ex = EXAMPLES[demoIdx];
+function demoNav(dir) { clearT(); load(idx + dir); }
 
-    // Reset visibility
-    elTask.classList.remove('on');
-    elQ.classList.remove('on');
-    elDots.classList.remove('on');
-    elR.innerHTML = '<span class="cursor"></span>';
-
-    // Update audio panel
-    elIcon.textContent  = ex.icon;
-    elLabel.textContent = ex.label;
-    elLabel.style.color = ex.color;
-    elWave.querySelectorAll('path').forEach(p => p.style.stroke = ex.color);
-
-    // Update task pill
-    elTask.textContent = ex.task;
-    elTask.style.background  = ex.taskColor;
-    elTask.style.color       = ex.taskTextColor;
-
-    // Update response border color
-    elR.style.borderColor = ex.color;
-
-    // Update nav dots
-    elNav.querySelectorAll('.demo-dot').forEach((d, i) =>
-      d.classList.toggle('on', i === demoIdx)
-    );
-
-    // Update question text (hidden until fade-in)
-    elQ.textContent = ex.question;
-
-    // Animate sequence
-    setTimeout(() => { elTask.classList.add('on'); elQ.classList.add('on'); }, 400);
-    setTimeout(() => { elDots.classList.add('on'); }, 1000);
-    setTimeout(() => {
-      elDots.classList.remove('on');
-      typeResponse(ex.response, () => {
-        demoTimer = setTimeout(() => loadExample(demoIdx + 1), 3000);
-      });
-    }, 2200);
-  }
-
-  function typeResponse(text, onDone) {
-    elR.innerHTML = '<span class="cursor"></span>';
-    let i = 0;
-    function step() {
-      if (i <= text.length) {
-        elR.innerHTML = text.slice(0, i) + '<span class="cursor"></span>';
-        i++;
-        typeTimer = setTimeout(step, i < 5 ? 60 : 28);
-      } else {
-        elR.innerHTML = text;
-        if (onDone) onDone();
-      }
-    }
-    step();
-  }
-
-  function demoNav(dir) {
-    clearTimers();
-    loadExample(demoIdx + dir);
-  }
-
-  // Kick off
-  loadExample(0);
+load(0);
 </script>
 </body>
 </html>
