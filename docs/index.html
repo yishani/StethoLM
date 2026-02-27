@@ -79,14 +79,18 @@
     /* box labels */
     .arch-box { fill: var(--gray-1); stroke: var(--gray-2); stroke-width: 1.5; rx: 6; }
     .arch-box.active { fill: #eff6ff; stroke: var(--blue); }
-    .arch-text { font-family: 'Inter', sans-serif; font-size: 7px; font-weight: 600; fill: var(--gray-8); text-anchor: middle; dominant-baseline: middle; }
-    .arch-sub  { font-family: 'Inter', sans-serif; font-size: 5.5px; fill: var(--gray-6); text-anchor: middle; dominant-baseline: middle; }
+    .arch-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: var(--gray-8); text-anchor: middle; dominant-baseline: middle; }
+    .arch-sub  { font-family: 'Inter', sans-serif; font-size: 8px; fill: var(--gray-6); text-anchor: middle; dominant-baseline: middle; }
     .arch-arrow { stroke: var(--gray-2); stroke-width: 1.5; fill: none; marker-end: url(#arr); }
     .arch-arrow.lit { stroke: var(--blue); }
     /* animated flow particle */
     .flow-dot { fill: var(--blue); opacity: 0; }
     .flow-dot.run { animation: flow-down 0.9s ease-in forwards; }
     @keyframes flow-down { 0% { opacity:1; transform:translateY(0);  } 100% { opacity:0; transform:translateY(22px); } }
+
+    @keyframes flow-right { 0% { opacity:1; transform:translateX(0); } 100% { opacity:0; transform:translateX(20px); } }
+    .flow-dot.run-right { animation: flow-right 0.6s ease-in forwards; }
+
 
     /* Output col */
     .task-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; opacity: 0; transition: opacity .4s; width: fit-content; }
@@ -194,7 +198,7 @@
 
         <!-- MODEL PANEL -->
         <div class="demo-col model-col">
-          <svg class="arch-svg" id="arch-svg" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
+          <svg class="arch-svg" id="arch-svg" viewBox="0 0 140 180" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
                 <path d="M0,0 L0,6 L6,3 z" fill="#d1d5db"/>
@@ -215,12 +219,12 @@
 
             <!-- StethoLM box -->
             <rect id="box1" x="10" y="72" width="100" height="40" rx="6" class="arch-box"/>
-            <text x="60" y="87" class="arch-text">🩺 StethoLM</text>
-            <text x="60" y="98" class="arch-sub">Audio-Language Model</text>
+            <text x="60" y="88" class="arch-text">🩺 StethoLM</text>
+            <text x="60" y="102" class="arch-sub">Audio-Language Model</text>
 
-            <!-- Output arrow exiting to bottom -->
-            <line id="arr-out" x1="60" y1="122" x2="60" y2="152" class="arch-arrow" marker-end="url(#arr)"/>
-            <circle id="fp2" class="flow-dot" cx="60" cy="128" r="3.5"/>
+            <!-- Output arrow exiting to right -->
+            <line id="arr-out" x1="112" y1="92" x2="135" y2="92" class="arch-arrow" marker-end="url(#arr)"/>
+            <circle id="fp2" class="flow-dot" cx="115" cy="92" r="3.5"/>
           </svg>
         </div>
 
@@ -469,6 +473,14 @@ function setActive(active) {
   }
 }
 
+function fireParticleRight(el, delay) {
+  setTimeout(() => {
+    el.classList.remove('run-right');
+    void el.offsetWidth;
+    el.classList.add('run-right');
+  }, delay);
+}
+
 function fireParticle(el, delay) {
   setTimeout(() => {
     el.classList.remove('run');
@@ -508,7 +520,7 @@ function load(i) {
   // Sequence
   setTimeout(() => { elQ.classList.add('on'); setActive(1); }, 300);
   setTimeout(() => { elTask.classList.add('on'); setActive(2); fireParticle(fp1, 0); }, 1000);
-  setTimeout(() => { setActive(3); fireParticle(fp2, 0); }, 1700);
+  setTimeout(() => { setActive(3); fireParticleRight(fp2, 0); }, 1700);
   setTimeout(() => {
     setActive(3);
     typeResponse(ex.response, () => {
